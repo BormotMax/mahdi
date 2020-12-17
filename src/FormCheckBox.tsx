@@ -6,9 +6,10 @@ interface Props {
   isChecked: boolean,
   Icon: JSX.Element,
   title: string,
+  refHandler: Function,
 }
 
-export const FormCheckBox: FC<Props> = ({ isChecked, Icon, title }) => {
+export const FormCheckBox: FC<Props> = ({ isChecked, Icon, title, refHandler }) => {
   const [value, setValue] = useState(isChecked);
 
   const handleOnChange = () => {
@@ -23,7 +24,14 @@ export const FormCheckBox: FC<Props> = ({ isChecked, Icon, title }) => {
         </div>
         <span className="text-primary font-semibold text-2xl">{title}</span>
       </div>
-      <input type="checkbox" name="daily" id="dailyId" checked={value} onChange={handleOnChange}/>
+      <input
+        type="checkbox"
+        name={title}
+        // id="dailyId"
+        checked={value}
+        ref={(ele) => refHandler(ele)}
+        onChange={handleOnChange}
+      />
     </div>
   )
 };
