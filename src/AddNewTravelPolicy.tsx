@@ -1,6 +1,8 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { FormButton } from './FormButton';
 import { useForm } from "react-hook-form";
+import { FormCheckBox } from './FormCheckBox';
+import { BedIcon, BriefcaseIcon, CarIcon, DailyIcon, PlaneIcon, TrainIcon } from './svg/icons';
 
 interface Props {
   isOpened: Boolean,
@@ -14,6 +16,8 @@ type Inputs = {
 };
 
 export const AddNewTravelPolicy: FC<Props> = ({ isOpened, onClick }) => {
+  const [isChecked, setIsChecked] = useState(false);
+
   const { register, handleSubmit, watch, errors } = useForm<Inputs>({
     criteriaMode: "all"
   });
@@ -25,6 +29,11 @@ export const AddNewTravelPolicy: FC<Props> = ({ isOpened, onClick }) => {
   const onSubmit = (data: any) => {
     console.log(data, errors);
   };
+
+  const onCheck = (e: any) => {
+    console.log(e, "value>>>", e.target.value, e.target.id, "target>>>>",e.target, e.target.name);
+    setIsChecked((prev) => !prev);
+  }
 
   return (
     <>
@@ -38,7 +47,7 @@ export const AddNewTravelPolicy: FC<Props> = ({ isOpened, onClick }) => {
           <button type="button" onClick={handleClick} className="focus:outline-none text-5xl text-white font-semibold">X</button>
         </div>
         <div className="w-full px-24">
-          <h4 className="font-semibold text-primary text-3xl mb-6">Name & Descriptioon</h4>
+          <h4 className="font-semibold text-primary text-3xl mb-6">Name & Description</h4>
           <h5 className="mb-3 text-2xl text-primary">Policy Name</h5>
           {errors.name && <span className="text-red-500">This field is required</span>}
           <input
@@ -55,167 +64,19 @@ export const AddNewTravelPolicy: FC<Props> = ({ isOpened, onClick }) => {
             ref={register}
           />
           <h4 className="font-semibold text-primary text-3xl mb-6">General Policies</h4>
-          <h5 className="mb-3 text-2xl text-primary">Short description about selecting items and editing them later</h5>
-        </div>
-        <div className="w-full px-24">
-          <h4 className="font-semibold text-primary text-3xl mb-6">Name & Descriptioon</h4>
-          <h5 className="mb-3 text-2xl text-primary">Policy Name</h5>
-          {errors.name && <span className="text-red-500">This field is required</span>}
-          <input
-            className="h-16 w-full mb-8 px-5 bg-input focus:outline-none rounded-md"
-            name="name"
-            placeholder="name"
-            ref={register({ required: true })}
-          />
-          <h5 className="mb-3 text-2xl text-primary">Description ( optional )</h5>
-          <textarea
-            className="h-44 w-full mb-12 px-5 pt-4 bg-input focus:outline-none rounded-md resize-none"
-            name="description"
-            placeholder="Description"
-            ref={register}
-          />
-          <h4 className="font-semibold text-primary text-3xl mb-6">General Policies</h4>
-          <h5 className="mb-3 text-2xl text-primary">Short description about selecting items and editing them later</h5>
-        </div>
-        <div className="w-full px-24">
-          <h4 className="font-semibold text-primary text-3xl mb-6">Name & Descriptioon</h4>
-          <h5 className="mb-3 text-2xl text-primary">Policy Name</h5>
-          {errors.name && <span className="text-red-500">This field is required</span>}
-          <input
-            className="h-16 w-full mb-8 px-5 bg-input focus:outline-none rounded-md"
-            name="name"
-            placeholder="name"
-            ref={register({ required: true })}
-          />
-          <h5 className="mb-3 text-2xl text-primary">Description ( optional )</h5>
-          <textarea
-            className="h-44 w-full mb-12 px-5 pt-4 bg-input focus:outline-none rounded-md resize-none"
-            name="description"
-            placeholder="Description"
-            ref={register}
-          />
-          <h4 className="font-semibold text-primary text-3xl mb-6">General Policies</h4>
-          <h5 className="mb-3 text-2xl text-primary">Short description about selecting items and editing them later</h5>
-        </div>
-        <div className="w-full px-24">
-          <h4 className="font-semibold text-primary text-3xl mb-6">Name & Descriptioon</h4>
-          <h5 className="mb-3 text-2xl text-primary">Policy Name</h5>
-          {errors.name && <span className="text-red-500">This field is required</span>}
-          <input
-            className="h-16 w-full mb-8 px-5 bg-input focus:outline-none rounded-md"
-            name="name"
-            placeholder="name"
-            ref={register({ required: true })}
-          />
-          <h5 className="mb-3 text-2xl text-primary">Description ( optional )</h5>
-          <textarea
-            className="h-44 w-full mb-12 px-5 pt-4 bg-input focus:outline-none rounded-md resize-none"
-            name="description"
-            placeholder="Description"
-            ref={register}
-          />
-          <h4 className="font-semibold text-primary text-3xl mb-6">General Policies</h4>
-          <h5 className="mb-3 text-2xl text-primary">Short description about selecting items and editing them later</h5>
-        </div>
-        <div className="w-full px-24">
-          <h4 className="font-semibold text-primary text-3xl mb-6">Name & Descriptioon</h4>
-          <h5 className="mb-3 text-2xl text-primary">Policy Name</h5>
-          {errors.name && <span className="text-red-500">This field is required</span>}
-          <input
-            className="h-16 w-full mb-8 px-5 bg-input focus:outline-none rounded-md"
-            name="name"
-            placeholder="name"
-            ref={register({ required: true })}
-          />
-          <h5 className="mb-3 text-2xl text-primary">Description ( optional )</h5>
-          <textarea
-            className="h-44 w-full mb-12 px-5 pt-4 bg-input focus:outline-none rounded-md resize-none"
-            name="description"
-            placeholder="Description"
-            ref={register}
-          />
-          <h4 className="font-semibold text-primary text-3xl mb-6">General Policies</h4>
-          <h5 className="mb-3 text-2xl text-primary">Short description about selecting items and editing them later</h5>
-        </div>
-        <div className="w-full px-24">
-          <h4 className="font-semibold text-primary text-3xl mb-6">Name & Descriptioon</h4>
-          <h5 className="mb-3 text-2xl text-primary">Policy Name</h5>
-          {errors.name && <span className="text-red-500">This field is required</span>}
-          <input
-            className="h-16 w-full mb-8 px-5 bg-input focus:outline-none rounded-md"
-            name="name"
-            placeholder="name"
-            ref={register({ required: true })}
-          />
-          <h5 className="mb-3 text-2xl text-primary">Description ( optional )</h5>
-          <textarea
-            className="h-44 w-full mb-12 px-5 pt-4 bg-input focus:outline-none rounded-md resize-none"
-            name="description"
-            placeholder="Description"
-            ref={register}
-          />
-          <h4 className="font-semibold text-primary text-3xl mb-6">General Policies</h4>
-          <h5 className="mb-3 text-2xl text-primary">Short description about selecting items and editing them later</h5>
-        </div>
-        <div className="w-full px-24">
-          <h4 className="font-semibold text-primary text-3xl mb-6">Name & Descriptioon</h4>
-          <h5 className="mb-3 text-2xl text-primary">Policy Name</h5>
-          {errors.name && <span className="text-red-500">This field is required</span>}
-          <input
-            className="h-16 w-full mb-8 px-5 bg-input focus:outline-none rounded-md"
-            name="name"
-            placeholder="name"
-            ref={register({ required: true })}
-          />
-          <h5 className="mb-3 text-2xl text-primary">Description ( optional )</h5>
-          <textarea
-            className="h-44 w-full mb-12 px-5 pt-4 bg-input focus:outline-none rounded-md resize-none"
-            name="description"
-            placeholder="Description"
-            ref={register}
-          />
-          <h4 className="font-semibold text-primary text-3xl mb-6">General Policies</h4>
-          <h5 className="mb-3 text-2xl text-primary">Short description about selecting items and editing them later</h5>
-        </div>
-        <div className="w-full px-24">
-          <h4 className="font-semibold text-primary text-3xl mb-6">Name & Descriptioon</h4>
-          <h5 className="mb-3 text-2xl text-primary">Policy Name</h5>
-          {errors.name && <span className="text-red-500">This field is required</span>}
-          <input
-            className="h-16 w-full mb-8 px-5 bg-input focus:outline-none rounded-md"
-            name="name"
-            placeholder="name"
-            ref={register({ required: true })}
-          />
-          <h5 className="mb-3 text-2xl text-primary">Description ( optional )</h5>
-          <textarea
-            className="h-44 w-full mb-12 px-5 pt-4 bg-input focus:outline-none rounded-md resize-none"
-            name="description"
-            placeholder="Description"
-            ref={register}
-          />
-          <h4 className="font-semibold text-primary text-3xl mb-6">General Policies</h4>
-          <h5 className="mb-3 text-2xl text-primary">Short description about selecting items and editing them later</h5>
-        </div>
-        <div className="w-full px-24">
-          <h4 className="font-semibold text-primary text-3xl mb-6">Name & Descriptioon</h4>
-          <h5 className="mb-3 text-2xl text-primary">Policy Name</h5>
-          {errors.name && <span className="text-red-500">This field is required</span>}
-          <input
-            className="h-16 w-full mb-8 px-5 bg-input focus:outline-none rounded-md"
-            name="name"
-            placeholder="name"
-            ref={register({ required: true })}
-          />
-          <h5 className="mb-3 text-2xl text-primary">Description ( optional )</h5>
-          <textarea
-            className="h-44 w-full mb-12 px-5 pt-4 bg-input focus:outline-none rounded-md resize-none"
-            name="description"
-            placeholder="Description"
-            ref={register}
-          />
-          <h4 className="font-semibold text-primary text-3xl mb-6">General Policies</h4>
-          <h5 className="mb-3 text-2xl text-primary">Short description about selecting items and editing them later</h5>
+          <h5 className="mb-7 text-2xl text-primary">Short description about selecting items and editing them later</h5>
+          <FormCheckBox isChecked Icon={BedIcon} title="Hotels" />
+          <FormCheckBox isChecked Icon={TrainIcon} title="Flights" />
+          <FormCheckBox isChecked={false} Icon={PlaneIcon} title="Trains" />
+          <FormCheckBox isChecked Icon={CarIcon} title="Cars" />
+          <FormCheckBox isChecked Icon={BriefcaseIcon} title="Perdieme" />
+          <FormCheckBox isChecked Icon={DailyIcon} title="Daily Expenses" />
+          <FormCheckBox isChecked Icon={CarIcon} title="Cars" />
+          <FormCheckBox isChecked Icon={BriefcaseIcon} title="Perdieme" />
+          <FormCheckBox isChecked Icon={DailyIcon} title="Daily Expenses" />
+          <FormCheckBox isChecked Icon={CarIcon} title="Cars" />
+          <FormCheckBox isChecked Icon={BriefcaseIcon} title="Perdieme" />
+          <FormCheckBox isChecked Icon={DailyIcon} title="Daily Expenses" />
         </div>
         <div className="flex justify-between w-full sticky bottom-0 py-11 bg-primary lg:px-36 sm:px-12">
           <FormButton

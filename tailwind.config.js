@@ -6,7 +6,9 @@ module.exports = {
       ...theme('colors'),
       'primary': '#e5e5e5',
       'secondary': '#2831a6',
-      'input': '#f5f7fe'
+      'input': '#f5f7fe',
+      'light-blue': '#edeeff',
+      'light-grey': '#fafbff'
      }),
      borderColor: theme => ({
       ...theme('colors'),
