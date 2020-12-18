@@ -7,6 +7,7 @@ import { BedIcon, BriefcaseIcon, CarIcon, DailyIcon, PlaneIcon, TrainIcon } from
 interface Props {
   isOpened: Boolean,
   onClick: Function,
+  updateFn: Function,
 };
 
 type Inputs = {
@@ -15,27 +16,30 @@ type Inputs = {
   exampleRequired: string,
 };
 
-export const AddNewTravelPolicy: FC<Props> = ({ isOpened, onClick }) => {
-  const [isChecked, setIsChecked] = useState(false);
+export const AddNewTravelPolicy: FC<Props> = ({ isOpened, onClick, updateFn }) => {
+  const [isChecked, setIsChecked] = useState(isOpened);
 
-  const { register, handleSubmit, watch, errors } = useForm<Inputs>({
+  const { register, handleSubmit, errors, reset } = useForm<Inputs>({
     criteriaMode: "all"
   });
 
   const handleClick = () => {
+    console.log('cLOSEcLICK')
     onClick();
   };
 
   const onSubmit = (data: any) => {
-    console.log(data, errors);
+    updateFn(data);
+    onClick();
+    reset();
   };
 
   return (
     <>
-    <div className={`absolute top-0 left-0 w-full h-full bg-black ${isOpened ? 'bg-opacity-0 hidden' : 'bg-opacity-50'}`}>
+    <div className={`absolute top-0 left-0 w-full h-full bg-black ${isOpened ? 'bg-opacity-50' : 'bg-opacity-0 hidden'}`}>
     </div>
       <form
-        className={`w-2/3 h-screen absolute top-0 right-0 bg-white overflow-hidden transform ${isOpened ? 'translate-x-full' : ''} duration-1000 ease-in`}
+        className={`w-2/3 h-screen absolute top-0 right-0 bg-white overflow-hidden transform ${isOpened ? '' : 'translate-x-full'} duration-1000 ease-in`}
         onSubmit={handleSubmit(onSubmit)}>
         <div className="flex py-11 pl-24 pr-12 justify-between bg-secondary rounded-tl-3xl pb-11">
           <h3 className="text-5xl text-white font-semibold">Add New Travel Policy</h3>

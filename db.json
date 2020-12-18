@@ -1,9 +1,26 @@
 {
-  "posts": [
-    { "id": 1, "title": "json-server", "author": "typicode" }
-  ],
-  "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 }
-  ],
-  "profile": { "name": "typicode" }
+  "travelPolicy": [
+    {
+      "name": "Date to arrive",
+      "description": "",
+      "Hotels": true,
+      "Flights": true,
+      "Trains": false,
+      "Cars": true,
+      "Perdieme": true,
+      "Daily Expenses": true,
+      "id": 1
+    },
+    {
+      "name": "hello jordan",
+      "description": "",
+      "Hotels": true,
+      "Flights": true,
+      "Trains": false,
+      "Cars": true,
+      "Perdieme": true,
+      "Daily Expenses": true,
+      "id": 2
+    }
+  ]
 }

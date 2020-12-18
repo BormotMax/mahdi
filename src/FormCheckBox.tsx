@@ -1,6 +1,4 @@
 import React, { FC, useState } from 'react'
-import { JsxChild } from 'typescript';
-import { BedIcon, BriefcaseIcon, DailyIcon } from './svg/icons';
 
 interface Props {
   isChecked: boolean,
@@ -27,7 +25,6 @@ export const FormCheckBox: FC<Props> = ({ isChecked, Icon, title, refHandler }) 
       <input
         type="checkbox"
         name={title}
-        // id="dailyId"
         checked={value}
         ref={(ele) => refHandler(ele)}
         onChange={handleOnChange}

@@ -6,10 +6,16 @@ import reportWebVitals from './reportWebVitals';
 import './fonts/Inter-Bold.ttf'; 
 import './fonts/Inter-Regular.ttf'; 
 import './fonts/Inter-SemiBold.ttf'; 
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <QueryClientProvider client={queryClient}>
+      <App />
+    </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
