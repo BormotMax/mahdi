@@ -1,15 +1,14 @@
-import { MutationFunction } from "react-query";
-
 interface NewPolicies {
   name: string,
 }
 
-interface UpdateTravelPoliciesVariables {
+export interface UpdateTravelPoliciesVariables {
   url: string;
   data: NewPolicies;
 }
 
-export const updateTravelPolicies: MutationFunction<any, any> = (async ({ url, data }: UpdateTravelPoliciesVariables) => {
+export const updateTravelPolicies = (async ({ url, data }: UpdateTravelPoliciesVariables) => {
+  try {
     const rawResponse = await fetch(url, {
       method: 'POST',
       headers: {
@@ -19,6 +18,10 @@ export const updateTravelPolicies: MutationFunction<any, any> = (async ({ url, d
       body: JSON.stringify(data)
     });
     const content = await rawResponse.json();
-  
-    console.log(content);
-  });
+
+    return content;
+    } catch (error) {
+    console.log(error);
+    }
+  }
+);

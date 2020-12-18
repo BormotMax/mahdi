@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 interface Props {
   type: "button" | "submit" | "reset" | undefined,
   className: string,
-  // onClick: Function,
+  // onClick?: Function,
   value: string,
 }
 

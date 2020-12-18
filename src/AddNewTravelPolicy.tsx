@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { FormButton } from './FormButton';
 import { useForm } from "react-hook-form";
 import { FormCheckBox } from './FormCheckBox';
@@ -17,14 +17,12 @@ type Inputs = {
 };
 
 export const AddNewTravelPolicy: FC<Props> = ({ isOpened, onClick, updateFn }) => {
-  const [isChecked, setIsChecked] = useState(isOpened);
 
   const { register, handleSubmit, errors, reset } = useForm<Inputs>({
     criteriaMode: "all"
   });
 
   const handleClick = () => {
-    console.log('cLOSEcLICK')
     onClick();
   };
 

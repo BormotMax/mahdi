@@ -1,16 +1,6 @@
 import React, { useState } from 'react';
-import {
-  useQuery,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-  useMutation,
-} from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import { AddNewTravelPolicy } from './AddNewTravelPolicy';
-import { BASE_URL } from './api';
 import './App.css';
-import { updateTravelPolicies } from './helpers';
 import { TravelPolicies } from './TravelPolicies';
 
 
@@ -19,7 +9,7 @@ function App() {
   const handleClick = () => {
     setIsAdding((prevState) => !prevState);
   };
-  
+
   return (
     <>
       <div className="sm:container mx-auto h-screen p-4 sm:px-8 md:px-20 lg:px-36 pt-4 font-inter bg-primary relative overflow-x-hidden">
@@ -35,7 +25,8 @@ function App() {
         </div>
         <TravelPolicies isAdding={isAdding} onClick={handleClick}/>
       </div>
-      <ReactQueryDevtools initialIsOpen />
+
+      {/* <ReactQueryDevtools initialIsOpen />  devtools for query cache*/}
     </>
   );
 }
